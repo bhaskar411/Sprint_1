@@ -1,4 +1,4 @@
-<a [routerLink]="['add']">Add Attendance</a>
+<a [routerLink]="['/attendances']">Back</a>
 <table class="table table-striped"> 
     <thead>
         <th>Id</th>
@@ -11,6 +11,7 @@
     <tbody>
         <tr *ngFor="let e of attList">
             <div *ngIf="isDate(e.dateTime)">
+  
             <td>{{e.id}}</td>
             <td>{{   e.employeeId}}</td>
             <td>{{e.dateTime | date }}</td>

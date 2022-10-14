@@ -45,3 +45,16 @@
 .err{
     color: red;
 }
+
+#cont > div
+{
+    display: inline-block;
+    border: solid 1px #000;
+}
+#cont
+{
+    border: solid 1px #322626;
+    text-align: center;
+    margin: 0px auto;
+    width: 40%;
+}
