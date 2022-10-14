@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,6 @@ namespace SprintProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
     public class AttendancesController : ControllerBase
     {
         private readonly EmsContext _context;
@@ -30,11 +28,10 @@ namespace SprintProject.Controllers
         }
 
         // GET: api/Attendances/5
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Attendance>>> GetAttendanceWithdate(DateTime date)
+        public async Task<ActionResult<Attendance>> GetAttendance(int id)
         {
-            var attendance = await _context.Attendances.Where(x =>x.DateTime == date).ToListAsync(); ;
+            var attendance = await _context.Attendances.FindAsync(id);
 
             if (attendance == null)
             {
@@ -53,10 +50,7 @@ namespace SprintProject.Controllers
             {
                 return BadRequest();
             }
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+
             _context.Entry(attendance).State = EntityState.Modified;
 
             try
@@ -81,13 +75,8 @@ namespace SprintProject.Controllers
         // POST: api/Attendances
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        //[Authorize]
         public async Task<ActionResult<Attendance>> PostAttendance(Attendance attendance)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             _context.Attendances.Add(attendance);
             await _context.SaveChangesAsync();
 

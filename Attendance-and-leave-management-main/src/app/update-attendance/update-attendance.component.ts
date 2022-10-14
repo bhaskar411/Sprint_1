@@ -19,8 +19,7 @@ export class UpdateAttendanceComponent implements OnInit {
     ngOnInit(): void {      
       let attId=this.route.snapshot.params['id'];
       this.attService.getById(attId).subscribe(att=>{
-      this.attForm =new FormGroup({
-        
+      this.attForm =new FormGroup({        
         "id": new FormControl(attId),
         "employeeId": new FormControl(att.employeeId,Validators.required),
         "dateTime": new FormControl(att.dateTime, Validators.required),
