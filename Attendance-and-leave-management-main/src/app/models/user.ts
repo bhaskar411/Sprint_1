@@ -8,7 +8,7 @@ export class User {
     username!:string;
     password!:string;
     employee!:Employee;
-    role!:Role;
+    designation!:Designation;
 
 
 

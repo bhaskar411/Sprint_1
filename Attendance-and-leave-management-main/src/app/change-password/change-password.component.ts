@@ -31,7 +31,7 @@ export class ChangePasswordComponent implements OnInit {
       username:new FormControl(emp.username),
       employeeId:new FormControl(emp.employeeId,Validators.required),
       password:new FormControl("",[Validators.required,Validators.minLength(6)]),
-      role:new FormControl(emp.role),
+      role:new FormControl(emp.designation),
       confirmPass:new FormControl("",[Validators.required]),
     },{validators: this.MustMatch('password', 'confirmPass')});
   });
