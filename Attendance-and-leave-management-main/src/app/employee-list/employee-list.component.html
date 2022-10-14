@@ -5,7 +5,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Date Of Birth</th>
-        <!-- <th>Manager Id</th> -->
+        <th>Manager Id</th>
         <th>Email</th>
         <th>Mobile No</th>
         <th>Project Id</th>
@@ -13,10 +13,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let e of empList">
+            <ng-container *ngIf="isManagerId(e.managerID)">
             <td>{{e.id}}</td>
             <td>{{e.name}}</td>
             <td>{{e.dateOfBirth | date}}</td>
-            <!-- <td>{{e.managerId}}</td> -->
+            <td>{{e.managerID}}</td>
             <td>{{e.email}}</td>
             <td>{{e.mobileNo}}</td>
             <td>{{e.project.name}}</td>
@@ -27,6 +28,7 @@
 
 
             </td>
+        </ng-container>
         </tr>
     </tbody>
 </table>

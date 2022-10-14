@@ -22,6 +22,15 @@ export class AttendenceListComponent implements OnInit {
       alert('Api Call Failed');
     })
   }
+
+
+  isManagerId(id:number):boolean{
+    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
+    let empid = values.employeeId;
+
+    if(id == empid || values.designation == 0) return true;
+    return false;
+  }
   delete(id:number){
     if(confirm('do you want to delete'))
   {

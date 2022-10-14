@@ -24,7 +24,7 @@ namespace SprintProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Attendance>>> GetAttendances()
         {
-            return await _context.Attendances.ToListAsync();
+            return await _context.Attendances.Include(x => x.Employee).ToListAsync();
         }
 
         // GET: api/Attendances/5

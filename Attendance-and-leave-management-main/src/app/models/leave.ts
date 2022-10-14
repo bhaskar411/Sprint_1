@@ -12,6 +12,6 @@ export class Leave {
     endDate!:Date;
     statusType!:StatusType;
     reason!:string;
-    managerId!:number;
+    managerID!:number;
 
 }

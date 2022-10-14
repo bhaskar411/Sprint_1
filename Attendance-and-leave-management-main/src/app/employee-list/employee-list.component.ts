@@ -23,6 +23,14 @@ export class EmployeeListComponent implements OnInit {
     })
   }
 
+  isManagerId(id:number):boolean{
+    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
+    let empid = values.employeeId;
+
+    if(id == empid || values.designation == 0) return true;
+    return false;
+  }
+
   delete(id:number){
     if(confirm('Do you really want to delete employee')){
     console.log('deleting');

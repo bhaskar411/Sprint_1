@@ -11,6 +11,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let e of attList">
+          <ng-container *ngIf="isManagerId(e.employee.managerID)">
             <td>{{e.id}}</td>
             <td>{{   e.employeeId}}</td>
             <td>{{e.dateTime | date }}</td>
@@ -19,6 +20,8 @@
             <button [routerLink]="['update',e.id]" class="btn btn-primary">Update</button>
             <button (click)="delete(e.id)" class="btn btn-danger">Delete</button>
           </td>
+        </ng-container>
+        </tr>
            
     </tbody>
 </table>

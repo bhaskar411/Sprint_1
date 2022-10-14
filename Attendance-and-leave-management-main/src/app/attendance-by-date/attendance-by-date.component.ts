@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Attendance } from '../models/attendance';
 import { Status } from '../models/status';
 import { AttendanceService } from '../services/attendance.service';
@@ -10,10 +11,24 @@ import { AttendanceService } from '../services/attendance.service';
 })
 export class AttendanceByDateComponent implements OnInit {
   attList!:Attendance[];
+  dateForm!:FormGroup;
   status = Status;
+  date!:number;
   constructor(private attService:AttendanceService) { }
 
   ngOnInit(): void {
+
+    this.dateForm = new FormGroup({
+      finddate: new FormControl("",Validators.required)
+    })
+    console.log(this.dateForm.value);
+
+    
+
+
+
+
+
     this.attService.getList().subscribe(list=>{
       //console.log(list);
       this.attList=list;
@@ -37,9 +52,17 @@ export class AttendanceByDateComponent implements OnInit {
   }
   }
 
-  isDate(date:Date):boolean{
-    //if(date == new Date("2022-10-13 07:05:28.1070000")) return true;
-    return false
+
+  isDate(id:number):boolean{
+
+    if(id == this.date ) return true;
+    return false;
+  }
+
+  onSubmit(){
+    this.date = this.dateForm.get('findDate')?.value as number;
+    //console.log(this.date);
+
   }
 
 }

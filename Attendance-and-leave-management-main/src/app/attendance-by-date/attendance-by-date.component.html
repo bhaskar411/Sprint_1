@@ -1,17 +1,30 @@
 <a [routerLink]="['/attendances']">Back</a>
+<form [formGroup]="dateForm" (ngSubmit)="onSubmit()">
+  <div class ="form-group">
+      <label for ="finddate">Name</label>      
+      <input type ="number" class="form-control" value="this"
+      formControlName="finddate">
+      </div>
+
+  <div class="form-group">
+      <button type = "submit" class = 'btn btn-primary' [disabled]="!dateForm.valid">Find</button>
+      <button class = 'btn btn-secondary' [routerLink]="['/projects']">Project List</button>
+  </div>
+
+</form>
+
 <table class="table table-striped"> 
     <thead>
         <th>Id</th>
         <th>EmployeeId</th>
         <th>Date</th>
         <th>Status</th>
-        
+
         <th>Actions</th>
     </thead>
     <tbody>
         <tr *ngFor="let e of attList">
-            <div *ngIf="isDate(e.dateTime)">
-  
+          <ng-container *ngIf="isDate(e.employeeId)">  
             <td>{{e.id}}</td>
             <td>{{   e.employeeId}}</td>
             <td>{{e.dateTime | date }}</td>
@@ -20,7 +33,8 @@
             <button [routerLink]="['update',e.id]" class="btn btn-primary">Update</button>
             <button (click)="delete(e.id)" class="btn btn-danger">Delete</button>
           </td>
-        </div>
-        </tr>
+        </ng-container>
+      </tr>
+      
     </tbody>
 </table>

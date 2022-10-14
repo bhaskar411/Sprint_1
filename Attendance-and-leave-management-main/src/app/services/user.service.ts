@@ -53,7 +53,7 @@ export class UserService {
 
   isManLoggedIn():boolean{
     var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
-    if(values.designation == 1) return true;
+    if(values.designation != 2) return true;
     return false;
   }
 

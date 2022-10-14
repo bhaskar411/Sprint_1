@@ -50,7 +50,7 @@ namespace SprintProject.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLeave(int id, Leave leave)
         {
-            if (id != leave.EmployeeId)
+            if (id != leave.Id)
             {
                 return BadRequest();
             }
