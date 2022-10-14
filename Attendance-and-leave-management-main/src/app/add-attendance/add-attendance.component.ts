@@ -23,7 +23,7 @@ export class AddAttendanceComponent implements OnInit {
          
           "employeeId":new FormControl("",Validators.required),
           "date":new FormControl("",Validators.required),
-            "status":new FormControl(null,Validators.required)
+          "status":new FormControl(null,Validators.required)
             
         }
       );

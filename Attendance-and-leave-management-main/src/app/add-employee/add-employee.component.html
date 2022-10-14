@@ -30,9 +30,10 @@
     </div>
     <div class="form-group">
         <label for="projectId">Project Id</label>
-        <input type="number" class="form-control"
-            formControlName="projectId">
-    </div>
+        <select class="form-control" formControlName="projectId">
+        <option *ngFor="let p of projList" value="{{p.id}}">{{p.name}}</option>
+         </select>
+     </div>
     <div class="form-group">
         <label for="designation">Designation</label>
         <div *ngFor="let emp of designation |keyvalue">
