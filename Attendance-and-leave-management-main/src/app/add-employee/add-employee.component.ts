@@ -3,8 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Designation } from '../models/designation';
 import { Employee } from '../models/employee';
+import { Project } from '../models/project';
 import { User } from '../models/user';
 import { EmployeeService } from '../services/employee.service';
+import { ProjectService } from '../services/project.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -16,16 +18,24 @@ export class AddEmployeeComponent implements OnInit {
 
   empForm!: FormGroup;
   empList!: Employee[];
+  projList!: Project[];
 
 
   designation= Designation;
   
   constructor(private empService: EmployeeService,
-    private router: Router, private userService:UserService) { }
+    private router: Router, private userService:UserService, private projService: ProjectService,) { }
 
   ngOnInit(): void {
     this.empService.getEmpList().subscribe(list=>{
       this.empList=list;
+    },err=>{
+      console.log(err);
+    })
+
+    this.projService.getList().subscribe(list=>{
+      this.projList=list;
+      //console.log(list)
     },err=>{
       console.log(err);
     })
@@ -54,6 +64,13 @@ export class AddEmployeeComponent implements OnInit {
      },err=>{
       alert('Add employee failed');
      })
+
+     this.projService.getList().subscribe(list=>{
+      this.projList=list;
+      console.log(list)
+    },err=>{
+      console.log(err);
+    })
   }
 
   isNumber(id:any) : boolean{

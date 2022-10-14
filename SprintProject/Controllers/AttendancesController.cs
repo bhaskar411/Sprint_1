@@ -12,7 +12,7 @@ namespace SprintProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class AttendancesController : ControllerBase
     {
         private readonly EmsContext _context;
@@ -81,7 +81,7 @@ namespace SprintProject.Controllers
         // POST: api/Attendances
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Attendance>> PostAttendance(Attendance attendance)
         {
             if (!ModelState.IsValid)
