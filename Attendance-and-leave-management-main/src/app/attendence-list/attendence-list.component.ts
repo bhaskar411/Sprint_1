@@ -24,13 +24,26 @@ export class AttendenceListComponent implements OnInit {
   }
 
 
-  isManagerId(id:number):boolean{
-    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
-    let empid = values.employeeId;
+  isManagerId(manId:number,empId:number):boolean{
+    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');
 
-    if(id == empid || values.designation == 0) return true;
-    return false;
+    if(values.designation == 1){
+      if(manId == values.employeeId) return true;
+    }
+    else if (values.designation == 0 ) {
+        return true;
+      
+    } else  if(empId == values.employeeId) return true;
+
+    else{
+      return false;
+    }
+      return false;
+    // if(id == empid || values.designation == 0) return true;
+    // return false;
   }
+
+
   delete(id:number){
     if(confirm('do you want to delete'))
   {

@@ -61,6 +61,7 @@ export class ChangePasswordComponent implements OnInit {
     console.log(this.changeForm.value as unknown as User );
     this.userService.changePassowrd(this.changeForm.value as unknown as User).subscribe(result => {      
       alert('Password Change Successfull');
+      this.userService.logout();
       this.router.navigate(['']);
     },err => {
 

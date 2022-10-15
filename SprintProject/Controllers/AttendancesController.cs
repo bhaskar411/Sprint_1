@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,8 @@ namespace SprintProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class AttendancesController : ControllerBase
     {
         private readonly EmsContext _context;
@@ -77,6 +80,12 @@ namespace SprintProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Attendance>> PostAttendance(Attendance attendance)
         {
+            if (DateTime.Compare(attendance.DateTime, DateTime.Now) > 0)
+            {
+                return BadRequest("No Future Days ALlowed");
+                
+            }
+
             _context.Attendances.Add(attendance);
             await _context.SaveChangesAsync();
 

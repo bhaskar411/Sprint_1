@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let e of attList">
-          <ng-container *ngIf="isManagerId(e.employee.managerID)">
+          <ng-container *ngIf="isManagerId(e.employee.managerID,e.employeeId)">
             <td>{{e.id}}</td>
             <td>{{   e.employeeId}}</td>
             <td>{{e.dateTime | date }}</td>
