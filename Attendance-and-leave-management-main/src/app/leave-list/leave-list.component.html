@@ -22,12 +22,18 @@
             <td>{{statustype[e.statusType]}}</td>
             <td>{{e.reason}}</td>
             <!-- <td>{{e.managerId}}</td> -->
+            <ng-container *ngIf="!isNotEmployee()">
+                <td>
+                    <button (click)="delete(e.id)" class="btn btn-danger">Delete</button>
+                    
+                </td>
+            </ng-container>
+
+
             <ng-container *ngIf="isNotEmployee()">
             <td>
                 <button (click)="accept(e.id)" class="btn btn-primary">Accept</button>
                 <button (click)="reject(e.id)" class="btn btn-danger">Reject</button>
-
-
             </td>
             </ng-container>
             </ng-container> 

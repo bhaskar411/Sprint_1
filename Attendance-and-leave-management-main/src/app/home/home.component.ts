@@ -23,15 +23,6 @@ export class HomeComponent implements OnInit {
     this.empService.getListById(this.empid).subscribe(emp=>{
       //console.log(emp);
       this.empList=emp;
-      //console.log(this.empList);
-      //console.log("test");
-
-      this.projService.getById(this.empList.projectId).subscribe(proj =>{
-        this.project = proj;
-        //console.log(this.project);
-      },err => {
-        console.log(err);
-      });
     },err=>{
       console.log(err);
       alert('API call failed');

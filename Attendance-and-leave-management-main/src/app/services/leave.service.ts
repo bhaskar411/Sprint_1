@@ -27,6 +27,10 @@ private httpoptions = {
     return this.client.post<Leave>(this.apiUrl,proj,this.httpoptions);
   }
 
+  delete(id:number):Observable<any>{
+    return this.client.delete<Leave>(`${this.apiUrl}/${id}`);
+  }
+
   getLeaveById(id:number):Observable<Leave>{
     return this.client.get<Leave>(`${this.apiUrl}/${id}`);
 

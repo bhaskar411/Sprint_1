@@ -1,14 +1,3 @@
-<!-- <div >
-    <a [routerLink] = "['employees']" class="link-success">
-        <span style="padding-left:10px" class="glyphicon glyphicon-envelope"></span>Employees</a>
-    <a [routerLink] = "['']" class="link-success">
-        <span style="padding-left:10px" class="glyphicon glyphicon-envelope"></span>Attendance</a>
-    <a [routerLink] = "['']" class="link-success">
-            <span style="padding-left:10px" class="glyphicon glyphicon-envelope"></span>Leave</a>
-    <a  [routerLink] = "['']" class="link-danger" >
-            <span style="padding-left:10px" class="glyphicon glyphicon-envelope" ></span>Logout</a>
-        </div> -->
-
  
   <div class="container">
     <div class="row card-group">
@@ -17,6 +6,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Employee Id: {{empList.id}}</h5>
                     <h5 class="card-title">Name: {{empList.name}}</h5>
+                    <h5 class="card-title">Manager Id: {{empList.managerID}}</h5>
                     <h5 class="card-title">Date Of Birth: {{empList.dateOfBirth | date}}</h5>
                     <h5 class="card-title">Email Id: {{empList.email}}</h5>
                     <h5 class="card-title">Mobile No: {{empList.mobileNo}}</h5>

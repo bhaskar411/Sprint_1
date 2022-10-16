@@ -14,6 +14,7 @@ namespace SprintProject.Controllers
     [ApiController]
     [Authorize]
 
+
     public class AttendancesController : ControllerBase
     {
         private readonly EmsContext _context;

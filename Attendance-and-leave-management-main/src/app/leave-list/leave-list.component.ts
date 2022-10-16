@@ -107,4 +107,21 @@ export class LeaveListComponent implements OnInit {
   }
 }
 
+
+
+delete(id:number){
+  if(confirm('do you want to delete'))
+{
+  console.log('deleting');
+  this.leaveService.delete(id).subscribe(result=>{
+    alert('Leave Request deleted');
+    this.ngOnInit();
+  }, err=>{
+    console.log(err);
+  alert('Delete failed')  
+  })
+  
+}
+}
+
 }
