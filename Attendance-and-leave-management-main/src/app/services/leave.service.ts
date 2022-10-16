@@ -26,4 +26,13 @@ private httpoptions = {
   add(proj:Leave):Observable<Leave>{
     return this.client.post<Leave>(this.apiUrl,proj,this.httpoptions);
   }
+
+  getLeaveById(id:number):Observable<Leave>{
+    return this.client.get<Leave>(`${this.apiUrl}/${id}`);
+
+  }
+
+  update(leave:Leave):Observable<any>{
+    return this.client.put(`${this.apiUrl}/${leave.id}`,leave,this.httpoptions);
+  }
 }

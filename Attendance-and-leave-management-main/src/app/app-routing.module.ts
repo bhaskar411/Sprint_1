@@ -14,6 +14,8 @@ import { AttendenceListComponent } from './attendence-list/attendence-list.compo
 import { UpdateAttendanceComponent } from './update-attendance/update-attendance.component';
 import { LeaveListComponent } from './leave-list/leave-list.component';
 import { AddLeaveComponent } from './add-leave/add-leave.component';
+import { AttendanceByDateComponent } from './attendance-by-date/attendance-by-date.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'projects' , component : ProjectListComponent},
@@ -27,9 +29,11 @@ const routes: Routes = [
   {path:"changepassword",component:ChangePasswordComponent},
   {path:'attendances',component:AttendenceListComponent},
   {path:'attendances/add',component:AddAttendanceComponent},
+  {path:'attendances/ByDate',component:AttendanceByDateComponent},
   {path:'attendances/update/:id',component:UpdateAttendanceComponent},
   {path:'leaves',component:LeaveListComponent},
-  {path:'leaves/add',component:AddLeaveComponent}
+  {path:'leaves/add',component:AddLeaveComponent},
+  {path:'register',component:RegisterComponent}
   
 ];
 

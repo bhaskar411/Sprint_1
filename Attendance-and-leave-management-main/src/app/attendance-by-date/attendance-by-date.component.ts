@@ -1,19 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Attendance } from '../models/attendance';
 import { Status } from '../models/status';
 import { AttendanceService } from '../services/attendance.service';
 
 @Component({
-  selector: 'app-attendence-list',
-  templateUrl: './attendence-list.component.html',
-  styleUrls: ['./attendence-list.component.css']
+  selector: 'app-attendance-by-date',
+  templateUrl: './attendance-by-date.component.html',
+  styleUrls: ['./attendance-by-date.component.css']
 })
-export class AttendenceListComponent implements OnInit {
+export class AttendanceByDateComponent implements OnInit {
   attList!:Attendance[];
+  dateForm!:FormGroup;
   status = Status;
+  date!:number;
   constructor(private attService:AttendanceService) { }
 
   ngOnInit(): void {
+
+    this.dateForm = new FormGroup({
+      finddate: new FormControl("",Validators.required)
+    })
+    console.log(this.dateForm.value);
+
+    
+
+
+
+
+
     this.attService.getList().subscribe(list=>{
       //console.log(list);
       this.attList=list;
@@ -22,28 +37,6 @@ export class AttendenceListComponent implements OnInit {
       alert('Api Call Failed');
     })
   }
-
-
-  isManagerId(manId:number,empId:number):boolean{
-    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');
-
-    if(values.designation == 1){
-      if(manId == values.employeeId) return true;
-    }
-    else if (values.designation == 0 ) {
-        return true;
-      
-    } else  if(empId == values.employeeId) return true;
-
-    else{
-      return false;
-    }
-      return false;
-    // if(id == empid || values.designation == 0) return true;
-    // return false;
-  }
-
-
   delete(id:number){
     if(confirm('do you want to delete'))
   {
@@ -58,4 +51,18 @@ export class AttendenceListComponent implements OnInit {
     
   }
   }
+
+
+  isDate(id:number):boolean{
+
+    if(id == this.date ) return true;
+    return false;
+  }
+
+  onSubmit(){
+    this.date = this.dateForm.get('findDate')?.value as number;
+    //console.log(this.date);
+
+  }
+
 }

@@ -20,6 +20,8 @@ import { UpdateAttendanceComponent } from './update-attendance/update-attendance
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { LeaveListComponent } from './leave-list/leave-list.component';
 import { AddLeaveComponent } from './add-leave/add-leave.component';
+import { AttendanceByDateComponent } from './attendance-by-date/attendance-by-date.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AddLeaveComponent } from './add-leave/add-leave.component';
     AddAttendanceComponent,
     UpdateAttendanceComponent,
     LeaveListComponent,
-    AddLeaveComponent
+    AddLeaveComponent,
+    AttendanceByDateComponent,
+    RegisterComponent
   ],
   imports: [
     ReactiveFormsModule,

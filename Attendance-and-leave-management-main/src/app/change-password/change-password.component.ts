@@ -31,7 +31,7 @@ export class ChangePasswordComponent implements OnInit {
       username:new FormControl(emp.username),
       employeeId:new FormControl(emp.employeeId,Validators.required),
       password:new FormControl("",[Validators.required,Validators.minLength(6)]),
-      role:new FormControl(emp.role),
+      role:new FormControl(emp.designation),
       confirmPass:new FormControl("",[Validators.required]),
     },{validators: this.MustMatch('password', 'confirmPass')});
   });
@@ -61,6 +61,7 @@ export class ChangePasswordComponent implements OnInit {
     console.log(this.changeForm.value as unknown as User );
     this.userService.changePassowrd(this.changeForm.value as unknown as User).subscribe(result => {      
       alert('Password Change Successfull');
+      this.userService.logout();
       this.router.navigate(['']);
     },err => {
 

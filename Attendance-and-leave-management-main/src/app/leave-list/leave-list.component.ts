@@ -13,6 +13,7 @@ export class LeaveListComponent implements OnInit {
   leaveList!:Leave[];
   statustype = StatusType;
   leavetype = LeaveType;
+  leave!: Leave;
 
   constructor(private leaveService:LeaveService) { }
 
@@ -25,5 +26,85 @@ export class LeaveListComponent implements OnInit {
       alert('API call failed');
     })
   }
+
+  accept(id:number){
+    if(confirm('Do you want to accept'))
+    {
+    this.leave = this.leaveList.filter(
+      l => l.id === id)[0];
+    console.log(this.leave);
+
+    if(this.leave.statusType == 3)
+    {
+      this.leave.statusType = 1;
+    }
+    else{
+      alert("Action Not Allowed");
+      return;
+    }
+    
+    //console.log(this.leave);
+    this.leaveService.update(this.leave).subscribe(result=>{
+      alert('Leave accepted');
+      //redirect to emp List
+      this.ngOnInit();
+     },err=>{
+      alert('Leave Accept failed');
+     })
+    console.log(id)
+  }
+}
+
+  isNotEmployee():boolean{
+    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');
+    if(values.designation == 2) return false
+    return true;
+  }
+
+
+  isManagerId(manId:number,empId:number):boolean{
+    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');
+
+    if(values.designation == 1){
+      if(manId == values.employeeId) return true;
+    }
+    else if (values.designation == 0 ) {
+        return true;
+      
+    } else  if(empId == values.employeeId) return true;
+
+    else{
+      return false;
+    }
+      return false;
+    // if(id == empid || values.designation == 0) return true;
+    // return false;
+  }
+
+  reject(id:number){
+    if(confirm('do you want to reject'))
+    {
+    this.leave = this.leaveList.filter(
+      l => l.id === id)[0];
+    console.log(this.leave);
+    if(this.leave.statusType == 3)
+    {
+      this.leave.statusType = 1;
+    }
+    else{
+      alert("Action Not Allowed");
+      return;
+    }
+    //console.log(this.leave);
+    this.leaveService.update(this.leave).subscribe(result=>{
+      alert('Leave Reject');
+      //redirect to emp List
+      this.ngOnInit();
+     },err=>{
+      alert('Leave Accept failed');
+     })
+    console.log(id)
+  }
+}
 
 }

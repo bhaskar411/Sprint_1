@@ -5,7 +5,7 @@ export class Employee {
     id!: number;
     name!: string;
     dateOfBirth!: Date;
-    managerId!: number;
+    managerID!: number;
     email!: string;
     mobileNo!: number;
     projectId!: number;

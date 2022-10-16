@@ -12,7 +12,8 @@
         <!-- <th>Manager Id</th> -->
     </thead>
     <tbody>
-        <tr *ngFor="let e of leaveList">           
+        <tr *ngFor="let e of leaveList">
+            <ng-container *ngIf="isManagerId(e.managerID,e.employeeId)">          
             <td>{{e.employeeId}}</td>
             <td>{{leavetype[e.leaveType]}}</td>
             <td>{{e.requestedDays}}</td>
@@ -21,11 +22,15 @@
             <td>{{statustype[e.statusType]}}</td>
             <td>{{e.reason}}</td>
             <!-- <td>{{e.managerId}}</td> -->
+            <ng-container *ngIf="isNotEmployee()">
             <td>
-                <button [routerLink]="['update',e.id]" class="btn btn-primary">Verify</button>
+                <button (click)="accept(e.id)" class="btn btn-primary">Accept</button>
+                <button (click)="reject(e.id)" class="btn btn-danger">Reject</button>
 
 
             </td>
+            </ng-container>
+            </ng-container> 
         </tr>
     </tbody>
 </table>

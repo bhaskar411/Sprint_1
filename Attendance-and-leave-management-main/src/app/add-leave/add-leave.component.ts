@@ -15,13 +15,17 @@ import { LeaveService } from '../services/leave.service';
 export class AddLeaveComponent implements OnInit {
   leaveForm!:FormGroup;
   statustype = StatusType;
-  leavetype = LeaveType; 
+  leavetype = LeaveType;
+  empid!:number; 
 
   constructor(private leaveService:LeaveService,private router:Router) { }
 
   ngOnInit(): void {
+    var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
+    this.empid = values.employeeId;
+
     this.leaveForm = new FormGroup({
-    employeeId: new FormControl("", Validators.required),
+    employeeId: new FormControl(this.empid, Validators.required),
     leaveType: new FormControl("", Validators.required),
     statusType:new FormControl("",Validators.required),
     managerId:new FormControl("",Validators.required),

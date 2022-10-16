@@ -14,16 +14,18 @@ export class AddAttendanceComponent implements OnInit {
 
   attForm!:FormGroup;
   status=Status;
+  empid!:number;
   
     constructor(private attService:AttendanceService,private router:Router) { }
   
     ngOnInit(): void {
+      var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
+      this.empid = values.employeeId;
       this.attForm=new FormGroup(
-        {
-         
-          "employeeId":new FormControl("",Validators.required),
-          "date":new FormControl("",Validators.required),
-          "status":new FormControl(null,Validators.required)
+        {        
+          employeeId:new FormControl(this.empid,Validators.required),
+          dateTime:new FormControl("",Validators.required),
+          status:new FormControl(null,Validators.required)
             
         }
       );
@@ -38,7 +40,7 @@ export class AddAttendanceComponent implements OnInit {
         
       }, err=>{
         console.log(err);
-        alert(' attendance  additon failed');
+        alert('Attendance failed (No future days allowed)');
       })
       
     }
