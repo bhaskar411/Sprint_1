@@ -1,4 +1,4 @@
-<a [routerLink]="['add']">Add Attendance</a> ||
+<a [routerLink]="['add']" class="button-21" style="margin-top: 10px;">Add Attendance</a> ||
 <a [routerLink]="['ByDate']">Attendance By Date</a>
 <table class="table table-striped"> 
     <thead>
@@ -17,8 +17,8 @@
             <td>{{e.dateTime | date }}</td>
             <td>{{status[e.status]}}</td>
           <td>
-            <button [routerLink]="['update',e.id]" class="btn btn-primary">Update</button>
-            <button (click)="delete(e.id)" class="btn btn-danger">Delete</button>
+            <button [routerLink]="['update',e.id]" class="button-21">Update</button>
+            <button (click)="delete(e.id)" class="button-20" style="margin-left: 30px;">Delete</button>
           </td>
         </ng-container>
         </tr>

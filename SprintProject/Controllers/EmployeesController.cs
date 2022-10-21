@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Versioning;
 using SprintProject.Models;
 
 namespace SprintProject.Controllers
@@ -35,7 +36,7 @@ namespace SprintProject.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _context.Employees.Include(e => e.Project).FirstOrDefaultAsync(i => i.Id == id);
 
             if (employee == null)
             {

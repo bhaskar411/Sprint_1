@@ -27,7 +27,7 @@ export class AddLeaveComponent implements OnInit {
     this.leaveForm = new FormGroup({
     employeeId: new FormControl(this.empid, Validators.required),
     leaveType: new FormControl("", Validators.required),
-    statusType:new FormControl("",Validators.required),
+    statusType:new FormControl(3),
     managerId:new FormControl("",Validators.required),
     requestedDays: new FormControl("", Validators.required),
     startDate: new FormControl("", Validators.required),
@@ -40,7 +40,7 @@ export class AddLeaveComponent implements OnInit {
     console.log(this.leaveForm);
     this.leaveService.add(this.leaveForm.value as unknown as Leave).subscribe(res=> {
       console.log(res);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/leaves']);
     },err=>{
       alert("leave Request Failed");
     });

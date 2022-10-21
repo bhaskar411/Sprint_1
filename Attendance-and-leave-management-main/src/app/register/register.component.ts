@@ -46,7 +46,12 @@ export class RegisterComponent implements OnInit {
   }
 
   isNumber(id:any) : boolean{
-    return typeof id === 'number'; 
+    if(id == 0) return false;
+    else if(typeof id === 'number')return true;
+    return false;
+
+
+  
  }
 
 }

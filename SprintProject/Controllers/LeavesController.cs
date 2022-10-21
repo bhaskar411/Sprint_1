@@ -91,10 +91,7 @@ namespace SprintProject.Controllers
             }
             if (!leave.StatusType.ToString().Equals("Pending"))
             {
-                if (leave.ManagerID.Equals(0))
-                {
-                    return BadRequest("Error");
-                }
+                return BadRequest("Error");
             }
             Console.WriteLine(leave.StartDate);
             Console.WriteLine(DateTime.Compare(leave.StartDate, DateTime.Now));

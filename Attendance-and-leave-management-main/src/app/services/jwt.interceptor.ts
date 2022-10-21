@@ -8,7 +8,9 @@ import {
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 
-@Injectable()
+@Injectable(
+  
+)
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private userService:UserService) {}

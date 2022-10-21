@@ -1,6 +1,7 @@
 <section class="Register">
     <div class="container">
         <form (ngSubmit)="onSubmit()" [formGroup]="changeForm">
+            <label>Register</label>
 
             <input type="text" class="input" placeholder="Employee Id" name="employeeId" formControlName ="employeeId">
         
@@ -23,15 +24,13 @@
             <div class="form-group">
                 <div *ngFor="let emp of design |keyvalue">
                   <div id="cont" *ngIf="isNumber(emp.value)">                  
-                    <input type="radio" [value]=emp.value formControlName="designation"> {{emp.key}}                    
+                    <input type="radio" class="" [value]=emp.value formControlName="designation"> {{emp.key}}                    
                  </div>
                 </div>
             </div>
        
             <div class="text-center">
-                <button type="submit" class="btn">Register</button>
-
-                |||||||||||||||||||||||||||||||||
+                <button type="submit" style="margin-right: 30px;" class="btn">Register</button>
 
                 <button routerLink="/" class="btn">Login</button>  
             </div>
