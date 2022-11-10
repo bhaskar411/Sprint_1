@@ -14,6 +14,7 @@ namespace SprintProject.Controllers
     [ApiController]
     [Authorize]
 
+
     public class AttendancesController : ControllerBase
     {
         private readonly EmsContext _context;
@@ -53,6 +54,10 @@ namespace SprintProject.Controllers
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             _context.Entry(attendance).State = EntityState.Modified;
 
@@ -80,6 +85,11 @@ namespace SprintProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Attendance>> PostAttendance(Attendance attendance)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (DateTime.Compare(attendance.DateTime, DateTime.Now) > 0)
             {
                 return BadRequest("No Future Days ALlowed");

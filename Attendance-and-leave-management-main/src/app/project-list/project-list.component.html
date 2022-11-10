@@ -1,5 +1,5 @@
 <h2>Project List</h2>
-<a [routerLink]="['add']" class="btn btn-link">Add Project</a>
+<a [routerLink]="['add']" class="button-21">Add Project</a>
 <table class="table table-striped">
     <thead>
         <th>Id</th>
@@ -12,10 +12,13 @@
             <td>{{d.id}}</td>
             <td>{{d.name}}</td>
             <td>{{d.domain}}</td>
+            <ng-container *ngIf="d.id != 4">
             <td>
-                <button class = "btn btn-primary" [routerLink]="['update',d.id]" >Update</button>
-                <button (click)="delete(d.id)" class = "btn btn-danger">Delete</button>
+                <button class = "button-21"   [routerLink]="['update',d.id]" >Update</button>
+                <button (click)="delete(d.id)" class = "button-20" style="margin-left: 30px;">Delete</button>
+                <button class = "button-33" [routerLink]="['employees',d.id]" style="margin-left: 30px;" >Employee List</button>
             </td>
+        </ng-container>
         </tr>
     </tbody>
 </table>

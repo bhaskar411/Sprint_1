@@ -44,6 +44,8 @@ export class AddAttendanceComponent implements OnInit {
       })
       
     }
+
+    
     isNumber(id : any):boolean{
       return typeof id === 'number';
     }

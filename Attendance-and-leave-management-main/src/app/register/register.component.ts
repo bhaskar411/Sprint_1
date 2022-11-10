@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Designation } from '../models/designation';
+import { Employee } from '../models/employee';
 import { User } from '../models/user';
+import { EmployeeService } from '../services/employee.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -44,7 +46,12 @@ export class RegisterComponent implements OnInit {
   }
 
   isNumber(id:any) : boolean{
-    return typeof id === 'number'; 
+    if(id == 0) return false;
+    else if(typeof id === 'number')return true;
+    return false;
+
+
+  
  }
 
 }

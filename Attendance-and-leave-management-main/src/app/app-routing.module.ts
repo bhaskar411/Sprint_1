@@ -16,6 +16,7 @@ import { LeaveListComponent } from './leave-list/leave-list.component';
 import { AddLeaveComponent } from './add-leave/add-leave.component';
 import { AttendanceByDateComponent } from './attendance-by-date/attendance-by-date.component';
 import { RegisterComponent } from './register/register.component';
+import { EmpListByProjComponent } from './emp-list-by-proj/emp-list-by-proj.component';
 
 const routes: Routes = [
   {path:'projects' , component : ProjectListComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path:'attendances/update/:id',component:UpdateAttendanceComponent},
   {path:'leaves',component:LeaveListComponent},
   {path:'leaves/add',component:AddLeaveComponent},
-  {path:'register',component:RegisterComponent}
+  {path:'register',component:RegisterComponent},
+  {path:'projects/employees/:id',component:EmpListByProjComponent}
   
 ];
 

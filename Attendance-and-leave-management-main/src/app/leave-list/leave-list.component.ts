@@ -89,7 +89,7 @@ export class LeaveListComponent implements OnInit {
     console.log(this.leave);
     if(this.leave.statusType == 3)
     {
-      this.leave.statusType = 1;
+      this.leave.statusType = 2;
     }
     else{
       alert("Action Not Allowed");
@@ -105,6 +105,31 @@ export class LeaveListComponent implements OnInit {
      })
     console.log(id)
   }
+}
+
+
+
+delete(id:number){
+  if(confirm('do you want to delete'))
+{
+  console.log('deleting');
+  this.leave = this.leaveList.filter(
+    l => l.id === id)[0]; 
+
+  if(this.leave.statusType == 3)
+  {
+    console.log("if");
+  this.leaveService.delete(id).subscribe(result=>{
+    alert('Leave Request deleted');
+    this.ngOnInit();
+  }, err=>{
+    console.log(err);
+  alert('Delete failed')  
+  })}else{
+    alert("Action not Allowed");
+  }
+  
+}
 }
 
 }

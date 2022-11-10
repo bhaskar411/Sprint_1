@@ -42,12 +42,12 @@
 
 
   <div *ngIf="isLoggedIn()"  class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-    <ul class="navbar-nav  mr-auto">
+    <ul class="navbar-nav  mr-auto" style="margin-left: 400px;">
         <li class="nav-item">
-          <a class="nav-link" [routerLink] = "['/changepassword']">Change Password</a>
+          <a class="nav-link" style="margin-top: 10px;"  [routerLink] = "['/changepassword']">Change Password</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="float:right;" [routerLink] = "['']"  (click)="logout()">Logout</a>
+          <a class="btn"  [routerLink] = "['']"  (click)="logout()">Logout</a>
         </li>
     </ul>
   </div>

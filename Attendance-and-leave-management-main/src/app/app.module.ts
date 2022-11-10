@@ -22,6 +22,7 @@ import { LeaveListComponent } from './leave-list/leave-list.component';
 import { AddLeaveComponent } from './add-leave/add-leave.component';
 import { AttendanceByDateComponent } from './attendance-by-date/attendance-by-date.component';
 import { RegisterComponent } from './register/register.component';
+import { EmpListByProjComponent } from './emp-list-by-proj/emp-list-by-proj.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegisterComponent } from './register/register.component';
     LeaveListComponent,
     AddLeaveComponent,
     AttendanceByDateComponent,
-    RegisterComponent
+    RegisterComponent,
+    EmpListByProjComponent
   ],
   imports: [
     ReactiveFormsModule,

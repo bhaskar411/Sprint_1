@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
   project!:Project;
   empList! :Employee;
   designation=Designation;
-  constructor(private empService:EmployeeService, private projService:ProjectService) { }
+  manager!: string;
+  constructor(private empService:EmployeeService) { }
 
   ngOnInit(): void {
     var values = JSON.parse(localStorage.getItem('UserInfo') || '{}');    
@@ -23,19 +24,28 @@ export class HomeComponent implements OnInit {
     this.empService.getListById(this.empid).subscribe(emp=>{
       //console.log(emp);
       this.empList=emp;
-      //console.log(this.empList);
-      //console.log("test");
-
-      this.projService.getById(this.empList.projectId).subscribe(proj =>{
-        this.project = proj;
-        //console.log(this.project);
-      },err => {
-        console.log(err);
-      });
     },err=>{
       console.log(err);
       alert('API call failed');
     });
+
+    console.log(this.empList);
+
+    if(this.empList.managerID != 0){
+      console.log("hello");
+      this.empService.getListById(this.empid).subscribe(emp=>{
+        //console.log(emp);
+        this.manager=emp.name;
+        console.log(this.manager);
+      },err=>{
+        console.log(err);
+        alert('API call failed');
+      });}else{
+        this.manager =  "No Manager";
+      }
+      
+
+
   }
 
 

@@ -60,9 +60,9 @@ export class AttendanceByDateComponent implements OnInit {
   }
 
   onSubmit(){
-    this.date = this.dateForm.get('findDate')?.value as number;
-    //console.log(this.date);
-
+    let resource = JSON.stringify(this.dateForm.value);
+    console.log(JSON.parse(resource).finddate)
+    
   }
 
 }
